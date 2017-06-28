@@ -18,6 +18,42 @@ module Marketo
       # Returns the Faraday::Response.
       define_verbs :get, :post, :put, :delete, :patch, :head
 
+      # Public: Returns a detailed describe result for the specified sobject
+      #
+      # Example
+      #   # get the describe for the Leads object
+      #   client.describe('leads')
+      #   # => { ... }
+      #
+      # Returns the Hash representation of the describe call.
+      def describe(object)
+        api_get("#{object.downcase}/describe.json")
+      end
+
+      # Public: Executes specific entity request and returns the result.
+      #
+      # Example
+      #   # Find the specific lead
+      #   client.query('leads', '318581')
+      #   # => {
+      #         "requestId": "10226#14d3049e51b",
+      #         "success": true,
+      #         "result": [
+      #            {
+      #               "id": 318581,
+      #               "updatedAt":"2015-05-07T11:47:30-08:00"
+      #               "lastName": "Doe",
+      #               "email": "jdoe@marketo.com",
+      #               "createdAt": "2015-05-01T16:47:30-08:00",
+      #               "firstName": "John"
+      #            }
+      #         ]
+      #      }
+      #
+      def query(object, id)
+        api_get("#{object}/#{id}.json")
+      end
+
       private
 
       # Internal: Returns a path to an api endpoint
