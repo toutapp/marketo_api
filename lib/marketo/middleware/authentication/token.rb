@@ -1,5 +1,5 @@
 module Marketo
-  # Authentication middleware used if oauth_token and refresh_token are set
+  # Authentication middleware used to fetch the access_token
   class Middleware::Authentication::Token < Marketo::Middleware::Authentication
     def params
       { grant_type: 'client_credentials',

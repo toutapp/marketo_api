@@ -6,11 +6,7 @@ module ClientIntegrationExampleGroup
         'E3Ds1eQz3z8jr3W7_VbWmEu4Q8TVGSTHxs'
       end
 
-      let(:refresh_token)  { 'refresh' }
       let(:instance_url)   { 'https://na1.marketo.com' }
-      let(:username)       { 'foo'            }
-      let(:password)       { 'bar'            }
-      let(:security_token) { 'security_token' }
       let(:client_id)      { 'client_id'      }
       let(:client_secret)  { 'client_secret'  }
       let(:cache)          { nil }
@@ -18,11 +14,7 @@ module ClientIntegrationExampleGroup
       let(:base_options) do
         {
           oauth_token: oauth_token,
-          refresh_token: refresh_token,
           instance_url: instance_url,
-          username: username,
-          password: password,
-          security_token: security_token,
           client_id: client_id,
           client_secret: client_secret,
           cache: cache,

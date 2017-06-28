@@ -16,9 +16,18 @@ module Marketo
 
     # Internal: Performs the authentication and returns the response body.
     def authenticate!
+      puts "IN AUTHENTICATE!!"
+      puts connection.inspect
       response = connection.post '/identity/oauth/token' do |req|
+        puts 'REQUEST'
+        puts req.inspect
+        puts req.body.inspect
+        puts params.inspect
         req.body = encode_www_form(params)
       end
+
+      puts 'RESPONSE'
+      puts response.inspect
 
       if response.status >= 500
         raise Marketo::ServerError, error_message(response)
@@ -73,7 +82,7 @@ module Marketo
     private
 
     def faraday_options
-      { url: "https://#{@options[:host]}", ssl: @options[:ssl] }
+      { url: "https://#{@options[:instance_url]}", ssl: @options[:ssl] }
     end
   end
 end

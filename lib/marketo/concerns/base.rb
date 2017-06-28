@@ -9,9 +9,6 @@ module Marketo
       #        :oauth_token             - The String oauth access token to authenticate
       #                                   API calls (required unless password
       #                                   authentication is used).
-      #        :refresh_token           - The String refresh token to obtain fresh
-      #                                   OAuth access tokens (required if oauth
-      #                                   authentication is used).
       #        :instance_url            - The String base url for all api requests
       #                                   (required if oauth authentication is used).
       #
@@ -19,16 +16,8 @@ module Marketo
       #                                   password and oauth authentication
       #        :client_secret           - The oauth client secret to use.
       #
-      #        :host                    - The String hostname to use during
-      #                                   authentication requests
-      #                                   (default: 'login.marketo.com').
-      #
       #        :api_version             - The String REST api version to use
       #                                   (default: '24.0')
-      #
-      #        :authentication_retries  - The number of times that client
-      #                                   should attempt to reauthenticate
-      #                                   before raising an exception (default: 3).
       #
       #        :timeout                 - Faraday connection request read/open timeout.
       #                                   (default: nil).

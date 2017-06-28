@@ -97,20 +97,14 @@ module Marketo
     # The OAuth client secret
     option :client_secret, default: lambda { ENV['MARKETO_CLIENT_SECRET'] }
 
-    # Set this to true if you're authenticating with a Sandbox instance.
-    # Defaults to false.
-    option :host, default: lambda { ENV['MARKETO_HOST'] || 'login.marketo.com' }
-
     option :oauth_token
-    # option :refresh_token
+
+    # The url to make all requests
     option :instance_url
 
     # Set this to an object that responds to read, write and fetch and all GET
     # requests will be cached.
     option :cache
-
-    # The number of times reauthentication should be tried before failing.
-    option :authentication_retries, default: 3
 
     # Faraday request read/open timeout.
     option :timeout

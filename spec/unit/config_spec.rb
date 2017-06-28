@@ -18,8 +18,6 @@ describe Marketo do
 
     context 'by default' do
       its(:api_version)            { should eq '1.0' }
-      its(:host)                   { should eq 'login.marketo.com' }
-      its(:authentication_retries) { should eq 3 }
       its(:adapter)                { should eq Faraday.default_adapter }
       its(:ssl)                    { should eq({}) }
       [:client_id, :client_secret,
@@ -34,23 +32,20 @@ describe Marketo do
         {
           'MARKETO_CLIENT_ID'      => 'client id',
           'MARKETO_CLIENT_SECRET'  => 'client secret',
-          'MARKETO_HOST'           => 'test.host.com',
           'MARKETO_API_VERSION'    => '37.0' }.
         each { |var, value| ENV.stub(:[]).with(var).and_return(value) }
       end
 
       its(:client_id)      { should eq 'client id' }
       its(:client_secret)  { should eq 'client secret' }
-      its(:host)           { should eq 'test.host.com' }
       its(:api_version)    { should eq '37.0' }
     end
   end
 
   describe '#configure' do
     [:client_id, :client_secret,
-     :timeout, :oauth_token, :instance_url, :api_version, :host,
-     :authentication_retries, :ssl,
-     :request_headers, :log_level, :logger].each do |attr|
+     :timeout, :oauth_token, :instance_url, :api_version,
+     :ssl, :request_headers, :log_level, :logger].each do |attr|
       it "allows #{attr} to be set" do
         Marketo.configure do |config|
           config.send("#{attr}=", 'foobar')

@@ -2,9 +2,7 @@ require 'spec_helper'
 
 describe Marketo::Middleware::Authentication do
   let(:options) do
-    { host: 'login.marketo.com',
-      authentication_retries: retries,
-      adapter: :net_http,
+    { adapter: :net_http,
       ssl: { version: :TLSv1_2 } }
   end
 

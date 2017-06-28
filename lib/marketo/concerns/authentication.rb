@@ -13,15 +13,7 @@ module Marketo
 
       # Internal: Determines what middleware will be used based on the options provided
       def authentication_middleware
-        Marketo::Middleware::Authentication::Token if oauth_refresh?
-      end
-
-      # Internal: Returns true if oauth token refresh flow should be used for
-      # authentication.
-      def oauth_refresh?
-        options[:refresh_token] &&
-          options[:client_id] &&
-          options[:client_secret]
+        Marketo::Middleware::Authentication::Token
       end
     end
   end

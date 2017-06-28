@@ -35,34 +35,7 @@ describe Marketo::Concerns::Authentication do
     subject { client.authentication_middleware }
 
     context 'when oauth options are provided' do
-      before do
-        client.stub oauth_refresh?: true
-      end
-
       it { should eq Marketo::Middleware::Authentication::Token }
-    end
-  end
-
-  describe '.oauth_refresh?' do
-    subject       { client.oauth_refresh? }
-    let(:options) { Hash.new }
-
-    before do
-      client.stub options: options
-    end
-
-    context 'when oauth options are provided' do
-      let(:options) do
-        { refresh_token: 'token',
-          client_id: 'client',
-          client_secret: 'secret' }
-      end
-
-      it { should be_true }
-    end
-
-    context 'when oauth options are not provided' do
-      it { should_not be_true }
     end
   end
 end
