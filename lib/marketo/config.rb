@@ -118,9 +118,6 @@ module Marketo
     # Faraday adapter to use. Defaults to Faraday.default_adapter.
     option :adapter, default: lambda { Faraday.default_adapter }
 
-    # A Proc that is called with the response body after a successful authentication.
-    option :authentication_callback
-
     # Set SSL options
     option :ssl, default: {}
 

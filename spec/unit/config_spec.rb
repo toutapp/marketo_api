@@ -24,7 +24,7 @@ describe Marketo do
       its(:ssl)                    { should eq({}) }
       [:client_id, :client_secret,
        :oauth_token, :instance_url, :timeout,
-       :authentication_callback, :request_headers].each do |attr|
+       :request_headers].each do |attr|
         its(attr) { should be_nil }
       end
     end
@@ -49,7 +49,7 @@ describe Marketo do
   describe '#configure' do
     [:client_id, :client_secret,
      :timeout, :oauth_token, :instance_url, :api_version, :host,
-     :authentication_retries, :authentication_callback, :ssl,
+     :authentication_retries, :ssl,
      :request_headers, :log_level, :logger].each do |attr|
       it "allows #{attr} to be set" do
         Marketo.configure do |config|

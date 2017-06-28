@@ -29,10 +29,6 @@ module Marketo
       @options[:instance_url] = response.body['instance_url']
       @options[:oauth_token]  = response.body['access_token']
 
-      if @options[:authentication_callback]
-        @options[:authentication_callback].call(response.body)
-      end
-
       response.body
     end
 

@@ -33,9 +33,6 @@ module Marketo
       #        :timeout                 - Faraday connection request read/open timeout.
       #                                   (default: nil).
       #
-      #        :authentication_callback - A Proc that is called with the response body
-      #                                   after a successful authentication.
-      #
       #        :request_headers         - A hash containing custom headers that will be
       #                                   appended to each request
 

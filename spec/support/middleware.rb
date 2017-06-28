@@ -45,17 +45,6 @@ shared_examples_for 'authentication middleware' do
                     "xjTrKW19ye6PE3Ds1eQz3z8jr3W7_VbWmEu4Q8TVGSTHxs"
         end
       end
-
-      context 'when an authentication_callback is specified' do
-        before(:each) do
-          options.merge!(authentication_callback: auth_callback)
-        end
-
-        it 'calls the authentication callback with the response body' do
-          auth_callback.should_receive(:call).with(success_response)
-          middleware.authenticate!
-        end
-      end
     end
 
     context 'when unsuccessful' do
@@ -65,19 +54,6 @@ shared_examples_for 'authentication middleware' do
         expect {
           middleware.authenticate!
         }.to raise_error Marketo::AuthenticationError, /^invalid_grant: .*/
-      end
-
-      context 'when an authentication_callback is specified' do
-        before(:each) do
-          options.merge!(authentication_callback: auth_callback)
-        end
-
-        it 'does not call the authentication callback' do
-          auth_callback.should_not_receive(:call)
-          expect do
-            middleware.authenticate!
-          end.to raise_error
-        end
       end
     end
   end
