@@ -21,11 +21,6 @@ module Marketo
       def connection
         @connection ||= Faraday.new(options[:instance_url],
                                     connection_options) do |builder|
-          # Parses JSON into Hashie::Mash structures.
-          unless (options[:mashify] == false)
-            builder.use    Marketo::Middleware::Mashify, self, options
-          end
-
           # Converts the request into JSON.
           builder.request  :json
           # Handles reauthentication for 403 responses.
@@ -35,7 +30,7 @@ module Marketo
           # Sets the oauth token in the headers.
           builder.use      Marketo::Middleware::Authorization, self, options
           # Ensures the instance url is set.
-          builder.use      Marketo::Middleware::InstanceURL, self, options
+          # builder.use      Marketo::Middleware::InstanceURL, self, options
           # Caches GET requests.
           builder.use      Marketo::Middleware::Caching, cache, options if cache
           # Follows 30x redirects.
@@ -45,7 +40,7 @@ module Marketo
           # Parses returned JSON response into a hash.
           builder.response :json, content_type: /\bjson$/
           # Inject custom headers into requests
-          builder.use      Marketo::Middleware::CustomHeaders, self, options
+          # builder.use      Marketo::Middleware::CustomHeaders, self, options
           # Log request/responses
           builder.use      Marketo::Middleware::Logger,
                            Marketo.configuration.logger,
@@ -67,12 +62,6 @@ module Marketo
           proxy: options[:proxy_uri],
           ssl: options[:ssl]
         }
-      end
-
-      # Internal: Returns true if the middlware stack includes the
-      # Marketo::Middleware::Mashify middleware.
-      def mashify?
-        middleware.handlers.index(Marketo::Middleware::Mashify)
       end
     end
   end

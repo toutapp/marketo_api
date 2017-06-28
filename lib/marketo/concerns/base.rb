@@ -28,7 +28,7 @@ module Marketo
       #
       #        :host                    - The String hostname to use during
       #                                   authentication requests
-      #                                   (default: 'login.salesforce.com').
+      #                                   (default: 'login.marketo.com').
       #
       #        :api_version             - The String REST api version to use
       #                                   (default: '24.0')
@@ -37,9 +37,6 @@ module Marketo
       #                                   should attempt to reauthenticate
       #                                   before raising an exception (default: 3).
       #
-      #        :mashify                 - Set to false to skip the conversion of
-      #                                   Marketo responses to Marketo::Sobjects and
-      #                                   Marketo::Collections. (default: nil).
       #        :timeout                 - Faraday connection request read/open timeout.
       #                                   (default: nil).
       #

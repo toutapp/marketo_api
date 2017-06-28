@@ -25,7 +25,7 @@ module Marketo
       # Examples
       #
       #   define_verb :get
-      #   # => get '/services/data/v24.0/sobjects'
+      #   # => get '/rest/v24.0/leads'
       #
       # Returns nil.
       def define_verb(verb)

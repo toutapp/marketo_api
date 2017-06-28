@@ -47,7 +47,6 @@ module Marketo
     def connection
       @connection ||= Faraday.new(faraday_options) do |builder|
         builder.use Faraday::Request::UrlEncoded
-        builder.use Marketo::Middleware::Mashify, nil, @options
         builder.response :json
 
         builder.use Marketo::Middleware::Logger,

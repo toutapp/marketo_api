@@ -5,7 +5,6 @@ module Marketo
     autoload :RaiseError,     'marketo/middleware/raise_error'
     autoload :Authentication, 'marketo/middleware/authentication'
     autoload :Authorization,  'marketo/middleware/authorization'
-    autoload :Mashify,        'marketo/middleware/mashify'
     autoload :Caching,        'marketo/middleware/caching'
     autoload :Logger,         'marketo/middleware/logger'
 

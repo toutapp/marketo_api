@@ -9,7 +9,6 @@ module Marketo
   autoload :AbstractClient, 'marketo/abstract_client'
   autoload :Middleware,     'marketo/middleware'
   autoload :Client,         'marketo/client'
-  autoload :Mash,           'marketo/mash'
 
   module Concerns
     autoload :Authentication, 'marketo/concerns/authentication'

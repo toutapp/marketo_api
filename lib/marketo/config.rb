@@ -121,13 +121,6 @@ module Marketo
     # The number of times reauthentication should be tried before failing.
     option :authentication_retries, default: 3
 
-    # Set to true if you want responses from Salesforce to be gzip compressed.
-    option :compress
-
-    # Set to false if you want to skip conversion to Marketo::Sobjects and
-    # Marketo::Collections.
-    option :mashify
-
     # Faraday request read/open timeout.
     option :timeout
 
