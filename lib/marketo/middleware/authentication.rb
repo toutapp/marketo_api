@@ -16,18 +16,8 @@ module Marketo
 
     # Internal: Performs the authentication and returns the response body.
     def authenticate!
-      puts "IN AUTHENTICATE!!"
-      puts connection.inspect
-      response = connection.post '/identity/oauth/token' do |req|
-        puts 'REQUEST'
-        puts req.inspect
-        puts req.body.inspect
-        puts params.inspect
-        req.body = encode_www_form(params)
-      end
-
-      puts 'RESPONSE'
-      puts response.inspect
+      url = @options[:instance_url] + '/oauth/token?' + URI.encode_www_form(params)
+      response = connection.get(url)
 
       if response.status >= 500
         raise Marketo::ServerError, error_message(response)
@@ -35,8 +25,8 @@ module Marketo
         raise Marketo::AuthenticationError, error_message(response)
       end
 
-      @options[:instance_url] = response.body['instance_url']
       @options[:oauth_token]  = response.body['access_token']
+      @options[:expires_in]  = response.body['expires_in']
 
       response.body
     end
@@ -65,24 +55,10 @@ module Marketo
       "#{response.body['error']}: #{response.body['error_description']}"
     end
 
-    # Featured detect form encoding.
-    # URI in 1.8 does not include encode_www_form
-    def encode_www_form(params)
-      if URI.respond_to?(:encode_www_form)
-        URI.encode_www_form(params)
-      else
-        params.map do |k, v|
-          k = CGI.escape(k.to_s)
-          v = CGI.escape(v.to_s)
-          "#{k}=#{v}"
-        end.join('&')
-      end
-    end
-
     private
 
     def faraday_options
-      { url: "https://#{@options[:instance_url]}", ssl: @options[:ssl] }
+      { url: @options[:instance_url], ssl: @options[:ssl] }
     end
   end
 end

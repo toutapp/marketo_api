@@ -89,7 +89,7 @@ module Marketo
       end
     end
 
-    option :api_version, default: lambda { ENV['MARKETO_API_VERSION'] || '1.0' }
+    option :api_version, default: lambda { ENV['MARKETO_API_VERSION'] || '1' }
 
     # The OAuth client id
     option :client_id, default: lambda { ENV['MARKETO_CLIENT_ID'] }
