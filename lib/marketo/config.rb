@@ -9,8 +9,8 @@ module Marketo
     #
     # Example
     #
-    #    Marketo.configuration.username = "username"
-    #    Marketo.configuration.password = "password"
+    #    Marketo.configuration.api_version = "1.0"
+    #    Marketo.configuration.cache = "ActiveSupport::Cache.lookup_store :redis_store"
     def configuration
       @configuration ||= Configuration.new
     end
@@ -20,8 +20,8 @@ module Marketo
     # Example
     #
     #    Marketo.configure do |config|
-    #      config.username = "username"
-    #      config.password = "password"
+    #      config.api_version = "1.0"
+    #      config.cache = "ActiveSupport::Cache.lookup_store :redis_store"
     #    end
     def configure
       yield configuration
@@ -89,16 +89,7 @@ module Marketo
       end
     end
 
-    option :api_version, default: lambda { ENV['MARKETO_API_VERSION'] || '26.0' }
-
-    # The username to use during login.
-    option :username, default: lambda { ENV['MARKETO_USERNAME'] }
-
-    # The password to use during login.
-    option :password, default: lambda { ENV['MARKETO_PASSWORD'] }
-
-    # The security token to use during login.
-    option :security_token, default: lambda { ENV['MARKETO_SECURITY_TOKEN'] }
+    option :api_version, default: lambda { ENV['MARKETO_API_VERSION'] || '1.0' }
 
     # The OAuth client id
     option :client_id, default: lambda { ENV['MARKETO_CLIENT_ID'] }
@@ -111,7 +102,7 @@ module Marketo
     option :host, default: lambda { ENV['MARKETO_HOST'] || 'login.marketo.com' }
 
     option :oauth_token
-    option :refresh_token
+    # option :refresh_token
     option :instance_url
 
     # Set this to an object that responds to read, write and fetch and all GET
@@ -126,8 +117,6 @@ module Marketo
 
     # Faraday adapter to use. Defaults to Faraday.default_adapter.
     option :adapter, default: lambda { Faraday.default_adapter }
-
-    option :proxy_uri, default: lambda { ENV['MARKETO_PROXY_URI'] }
 
     # A Proc that is called with the response body after a successful authentication.
     option :authentication_callback

@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Marketo::Middleware::Authentication do
   let(:options) do
     { host: 'login.marketo.com',
-      proxy_uri: 'https://not-a-real-site.com',
       authentication_retries: retries,
       adapter: :net_http,
       ssl: { version: :TLSv1_2 } }
@@ -41,10 +40,6 @@ describe Marketo::Middleware::Authentication do
     subject(:connection) { middleware.connection }
 
     its(:url_prefix)     { should eq(URI.parse('https://login.marketo.com')) }
-
-    it "should have a proxy URI" do
-      connection.proxy[:uri].should eq(URI.parse('https://not-a-real-site.com'))
-    end
 
     describe '.builder' do
       subject(:builder) { connection.builder }

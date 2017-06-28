@@ -34,45 +34,12 @@ describe Marketo::Concerns::Authentication do
   describe '.authentication_middleware' do
     subject { client.authentication_middleware }
 
-    context 'when username and password options are provided' do
-      before do
-        client.stub username_password?: true
-      end
-
-      it { should eq Marketo::Middleware::Authentication::Password }
-    end
-
     context 'when oauth options are provided' do
       before do
-        client.stub username_password?: false
         client.stub oauth_refresh?: true
       end
 
       it { should eq Marketo::Middleware::Authentication::Token }
-    end
-  end
-
-  describe '.username_password?' do
-    subject       { client.username_password? }
-    let(:options) { Hash.new }
-
-    before do
-      client.stub options: options
-    end
-
-    context 'when username and password options are provided' do
-      let(:options) do
-        { username: 'foo',
-          password: 'bar',
-          client_id: 'client',
-          client_secret: 'secret' }
-      end
-
-      it { should be_true }
-    end
-
-    context 'when username and password options are not provided' do
-      it { should_not be_true }
     end
   end
 

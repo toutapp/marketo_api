@@ -1,10 +1,8 @@
 module Marketo
   # Faraday middleware that allows for on the fly authentication of requests.
   # When a request fails (a status of 401 is returned), the middleware
-  # will attempt to either reauthenticate (username and password) or refresh
-  # the oauth access token (if a refresh token is present).
+  # will attempt to either reauthenticate (request new access_token).
   class Middleware::Authentication < Marketo::Middleware
-    autoload :Password, 'marketo/middleware/authentication/password'
     autoload :Token,    'marketo/middleware/authentication/token'
 
     # Rescue from 401's, authenticate then raise the error again so the client
@@ -28,7 +26,7 @@ module Marketo
         raise Marketo::AuthenticationError, error_message(response)
       end
 
-      # @options[:instance_url] = response.body['instance_url']
+      @options[:instance_url] = response.body['instance_url']
       @options[:oauth_token]  = response.body['access_token']
 
       if @options[:authentication_callback]
@@ -79,9 +77,7 @@ module Marketo
     private
 
     def faraday_options
-      { url: "https://#{@options[:host]}",
-        proxy: @options[:proxy_uri],
-        ssl: @options[:ssl] }
+      { url: "https://#{@options[:host]}", ssl: @options[:ssl] }
     end
   end
 end

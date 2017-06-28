@@ -59,7 +59,6 @@ module Marketo
         { request: {
             timeout: options[:timeout],
             open_timeout: options[:timeout] },
-          proxy: options[:proxy_uri],
           ssl: options[:ssl]
         }
       end

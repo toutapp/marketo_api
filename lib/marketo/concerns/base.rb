@@ -6,13 +6,6 @@ module Marketo
       # Public: Creates a new client instance
       #
       # opts - A hash of options to be passed in (default: {}).
-      #        :username                - The String username to use (required for
-      #                                   password authentication).
-      #        :password                - The String password to use (required for
-      #                                   password authentication).
-      #        :security_token          - The String security token to use (required for
-      #                                   password authentication).
-      #
       #        :oauth_token             - The String oauth access token to authenticate
       #                                   API calls (required unless password
       #                                   authentication is used).
@@ -39,9 +32,6 @@ module Marketo
       #
       #        :timeout                 - Faraday connection request read/open timeout.
       #                                   (default: nil).
-      #
-      #        :proxy_uri               - Proxy URI: 'http://proxy.example.com:port' or
-      #                                   'http://user@pass:proxy.example.com:port'
       #
       #        :authentication_callback - A Proc that is called with the response body
       #                                   after a successful authentication.
