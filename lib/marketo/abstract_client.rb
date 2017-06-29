@@ -7,5 +7,6 @@ module Marketo
 
     include Marketo::API::Base
     include Marketo::API::Leads
+    include Marketo::API::Activities
   end
 end

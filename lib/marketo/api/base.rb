@@ -12,46 +12,15 @@ module Marketo
       # Examples
       #
       #   # Perform a get request
-      #   client.get '/rest/v24.0/leads'
+      #   client.get '/rest/v1/leads'
       #   client.api_get 'leads'
       #
       # Returns the Faraday::Response.
       define_verbs :get, :post, :put, :delete, :patch, :head
 
-      # Public: Returns a detailed describe result for the specified sobject
-      #
-      # Example
-      #   # get the describe for the Leads object
-      #   client.describe('leads')
-      #   # => { ... }
-      #
-      # Returns the Hash representation of the describe call.
-      def describe(object)
-        api_get("#{object.downcase}/describe.json")
-      end
-
-      # Public: Executes specific entity request and returns the result.
-      #
-      # Example
-      #   # Find the specific lead
-      #   client.query('leads', '318581')
-      #   # => {
-      #         "requestId": "10226#14d3049e51b",
-      #         "success": true,
-      #         "result": [
-      #            {
-      #               "id": 318581,
-      #               "updatedAt":"2015-05-07T11:47:30-08:00"
-      #               "lastName": "Doe",
-      #               "email": "jdoe@marketo.com",
-      #               "createdAt": "2015-05-01T16:47:30-08:00",
-      #               "firstName": "John"
-      #            }
-      #         ]
-      #      }
-      #
-      def query(object, id)
-        api_get("#{object}/#{id}.json")
+      def format_filter_values(filter_values)
+        filter_values = filter_values.join(',') if filter_values.is_a?(Array)
+        filter_values
       end
 
       private
@@ -61,7 +30,7 @@ module Marketo
       # Examples
       #
       #   api_path('leads')
-      #   # => '/rest/v24.0/leads'
+      #   # => '/rest/v1/leads'
       def api_path(path)
         "/rest/v#{options[:api_version]}/#{path}"
       end
