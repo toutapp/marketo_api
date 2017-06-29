@@ -2,8 +2,8 @@ require 'uri'
 require 'Marketo/concerns/verbs'
 
 module Marketo
-  module Concerns
-    module API
+  module API
+    module Base
       extend Marketo::Concerns::Verbs
 
       # Public: Helper methods for performing arbitrary actions against the API using

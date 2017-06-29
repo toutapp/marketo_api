@@ -15,9 +15,12 @@ module Marketo
     autoload :Connection,     'marketo/concerns/connection'
     autoload :Caching,        'marketo/concerns/caching'
     autoload :Verbs,          'marketo/concerns/verbs'
-    autoload :Leads,          'marketo/concerns/leads'
     autoload :Base,           'marketo/concerns/base'
-    autoload :API,            'marketo/concerns/api'
+  end
+
+  module API
+    autoload :Base,           'marketo/api/base'
+    autoload :Leads,          'marketo/api/leads'
   end
 
   module Data
