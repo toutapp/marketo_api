@@ -4,6 +4,7 @@ module Marketo
     include Marketo::Concerns::Connection
     include Marketo::Concerns::Authentication
     include Marketo::Concerns::Caching
+    include Marketo::Concerns::Leads
     include Marketo::Concerns::API
   end
 end

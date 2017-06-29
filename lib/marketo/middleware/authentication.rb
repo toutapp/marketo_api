@@ -16,7 +16,7 @@ module Marketo
 
     # Internal: Performs the authentication and returns the response body.
     def authenticate!
-      url = @options[:instance_url] + '/oauth/token?' + URI.encode_www_form(params)
+      url = @options[:instance_url] + '/identity/oauth/token?' + URI.encode_www_form(params)
       response = connection.get(url)
 
       if response.status >= 500
