@@ -17,7 +17,7 @@ describe Marketo do
     it { should be_a Marketo::Configuration }
 
     context 'by default' do
-      its(:api_version)            { should eq '1.0' }
+      its(:api_version)            { should eq '1' }
       its(:adapter)                { should eq Faraday.default_adapter }
       its(:ssl)                    { should eq({}) }
       [:client_id, :client_secret,

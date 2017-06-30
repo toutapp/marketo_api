@@ -7,5 +7,8 @@ describe Marketo::AbstractClient do
   it { should < Marketo::Concerns::Connection }
   it { should < Marketo::Concerns::Authentication }
   it { should < Marketo::Concerns::Caching }
-  it { should < Marketo::Concerns::API }
+
+  it { should < Marketo::API::Base }
+  it { should < Marketo::API::Leads }
+  it { should < Marketo::API::Activities }
 end

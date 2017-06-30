@@ -20,7 +20,10 @@ module FixtureHelpers
     end
 
     def stub_login_request(*)
-      stub = stub_request(:post, "https://login.marketo.com/identity/oauth/token")
+      grant_type = "grant_type=client_credentials"
+      params = "client_id=client_id&client_secret=client_secret&#{grant_type}"
+      url = "https://login.marketo.com/identity/oauth/token"
+      stub = stub_request(:get, "#{url}?#{params}")
 
       stub
     end

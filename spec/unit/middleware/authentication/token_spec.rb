@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Marketo::Middleware::Authentication::Token do
   let(:options) do
-    { client_id: 'client_id',
+    {
+      instance_url: 'https://login.marketo.com',
+      client_id: 'client_id',
       client_secret: 'client_secret',
       adapter: :net_http }
   end

@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Marketo::Middleware::Authentication do
   let(:options) do
-    { adapter: :net_http,
+    {
+      instance_url: 'https://lfdjafldj.marketo.com',
+      adapter: :net_http,
       ssl: { version: :TLSv1_2 } }
   end
 
@@ -37,7 +39,7 @@ describe Marketo::Middleware::Authentication do
   describe '.connection' do
     subject(:connection) { middleware.connection }
 
-    its(:url_prefix)     { should eq(URI.parse('https://login.marketo.com')) }
+    its(:url_prefix)     { should eq(URI.parse('https://lfdjafldj.marketo.com/')) }
 
     describe '.builder' do
       subject(:builder) { connection.builder }

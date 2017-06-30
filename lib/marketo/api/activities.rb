@@ -14,8 +14,6 @@ module Marketo
       def activities_describe
         api_get('activities/types.json')
       end
-
-      
     end
   end
 end
