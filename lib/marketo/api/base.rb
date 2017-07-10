@@ -1,5 +1,5 @@
 require 'uri'
-require 'Marketo/concerns/verbs'
+require 'marketo/concerns/verbs'
 
 module Marketo
   module API
