@@ -36,6 +36,10 @@ module Marketo
         path = "activities.json?activityTypeIds=#{type_ids}"
         api_get(add_next_page_token(path, next_page_token))
       end
+
+      def create_activity!(attrs)
+        api_post('sales/activities.json', attrs)
+      end
     end
   end
 end
