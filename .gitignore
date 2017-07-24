@@ -4,7 +4,6 @@ test.rb
 .bundle
 .config
 .yardoc
-Gemfile.lock
 InstalledFiles
 _yardoc
 coverage
@@ -20,3 +19,4 @@ tmp
 .ruby-version
 *.swp
 junk.rb
+Gemfile.lock

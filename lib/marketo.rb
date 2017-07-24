@@ -35,16 +35,11 @@ module Marketo
   APIVersionError     = Class.new(Error)
 
   class << self
-    # Alias for Marketo::Data::Client.new
-    #
-    # Shamelessly pulled from https://github.com/pengwynn/octokit/blob/master/lib/octokit.rb
     def new(*args, &block)
-      data(*args, &block)
+      Data::Client.new(*args, &block)
     end
 
-    def data(*args, &block)
-      Marketo::Data::Client.new(*args, &block)
-    end
+    alias_method :data, :new
   end
 
   # Add .tap method in Ruby 1.8
@@ -54,5 +49,6 @@ module Marketo
       self
     end
   end
+
   Object.send :include, Marketo::CoreExtensions unless Object.respond_to? :tap
 end
