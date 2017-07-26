@@ -37,8 +37,8 @@ module Marketo
         api_get(add_next_page_token(path, next_page_token))
       end
 
-      def create_activity!(attrs)
-        api_post('sales/activities.json', attrs)
+      def interesting_moments(attrs)
+        api_get('activities/interesting_moments.json', attrs)
       end
     end
   end
