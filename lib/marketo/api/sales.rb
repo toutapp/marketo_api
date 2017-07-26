@@ -3,14 +3,6 @@ module Marketo
     module Sales
       include Base
 
-      # Public: Returns a detailed describe result for the specified activities
-      #
-      # Example
-      #   # get the describe for the Activities object
-      #   client.activities_describe
-      #   # => { ... }
-      #
-      # Returns the Hash representation of the describe call.
       def best_bets(attrs)
         api_get('sales/bestbets.json', attrs)
       end
