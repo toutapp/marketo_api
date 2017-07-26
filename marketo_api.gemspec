@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.version       = MarketoApi::VERSION
   gem.summary       = gem.description = %q{Ruby REST API wrapper for Marketo}
   gem.homepage      = 'https://github.com/toutapp/marketo'
-  gem.license       = 'MIT'
+  # gem.license       = 'MIT'
 
   gem.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   gem.bindir        = 'exe'
