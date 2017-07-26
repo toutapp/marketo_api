@@ -1,8 +1,8 @@
 # Marketo API
 
-> IMPORTANT: This is an alpha stage gem and is not ready to be used in production
+> IMPORTANT: This is an **alpha** stage gem and is not ready to be used in production
 
-`MarketoApi` is a ruby wrapper for the Marketo RESTful endpoints
+`MarketoApi` is a ruby wrapper for the Marketo RESTful API endpoints
 
 ## Installation
 
@@ -15,3 +15,9 @@ client = MarketoApi::Client.new(...)
 ```
 
 - TODO
+
+## Development
+
+## Testing
+
+## LICENSE

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Middleware::Authentication::Token do
+describe MarketoApi::Middleware::Authentication::Token do
   let(:options) do
     {
       instance_url: 'https://login.marketo.com',

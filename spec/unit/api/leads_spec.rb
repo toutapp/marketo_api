@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe Marketo::API::Leads do
+describe MarketoApi::API::Leads do
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Middleware::Authorization do
+describe MarketoApi::Middleware::Authorization do
   let(:options) { { oauth_token: 'token' } }
 
   describe '.call' do

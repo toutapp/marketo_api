@@ -1,7 +1,7 @@
 # Totally took this from Restforce.
 require 'logger'
 
-module Marketo
+module MarketoApi
   class << self
     attr_writer :log
 
@@ -9,8 +9,8 @@ module Marketo
     #
     # Example
     #
-    #    Marketo.configuration.api_version = "1.0"
-    #    Marketo.configuration.cache = "ActiveSupport::Cache.lookup_store :redis_store"
+    #    MarketoApi.configuration.api_version = "1.0"
+    #    MarketoApi.configuration.cache = "ActiveSupport::Cache.lookup_store :redis_store"
     def configuration
       @configuration ||= Configuration.new
     end
@@ -19,7 +19,7 @@ module Marketo
     #
     # Example
     #
-    #    Marketo.configure do |config|
+    #    MarketoApi.configure do |config|
     #      config.api_version = "1.0"
     #      config.cache = "ActiveSupport::Cache.lookup_store :redis_store"
     #    end
@@ -32,7 +32,7 @@ module Marketo
     end
 
     def log(message)
-      return unless Marketo.log?
+      return unless MarketoApi.log?
       configuration.logger.send(configuration.log_level, message)
     end
   end
@@ -118,10 +118,10 @@ module Marketo
     # A Hash that is converted to HTTP headers
     option :request_headers
 
-    # Set a logger for when Marketo.log is set to true, defaulting to STDOUT
+    # Set a logger for when MarketoApi.log is set to true, defaulting to STDOUT
     option :logger, default: ::Logger.new(STDOUT)
 
-    # Set a log level for logging when Marketo.log is set to true, defaulting to :debug
+    # Set a log level for logging when MarketoApi.log is set to true, defaulting to :debug
     option :log_level, default: :debug
 
     def options

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Concerns::Base do
+describe MarketoApi::Concerns::Base do
   describe '#new' do
     context 'without options passed in' do
       it 'does not raise an exception' do

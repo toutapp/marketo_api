@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Middleware::RaiseError do
+describe MarketoApi::Middleware::RaiseError do
   let(:body)       { JSON.parse(fixture('query_error_response')) }
   let(:env)        { { status: status, body: body } }
   let(:middleware) { described_class.new app }
@@ -39,7 +39,7 @@ describe Marketo::Middleware::RaiseError do
       let(:status) { 401 }
 
       it "raises an error" do
-        expect { on_complete }.to raise_error Marketo::UnauthorizedError,
+        expect { on_complete }.to raise_error MarketoApi::UnauthorizedError,
                                               'INVALID_FIELD: error_message'
       end
     end

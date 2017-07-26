@@ -1,9 +1,9 @@
-require File.expand_path('../lib/marketo/version', __FILE__)
+require File.expand_path('../lib/marketo_api/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ['Ami Bhatt']
   gem.name          = 'marketo-api'
-  gem.version       = Marketo::VERSION
+  gem.version       = MarketoApi::VERSION
   gem.summary       = gem.description = %q{Ruby REST API wrapper for Marketo}
   gem.homepage      = 'https://github.com/toutapp/marketo'
   gem.license       = 'MIT'

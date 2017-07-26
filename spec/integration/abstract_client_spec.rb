@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-shared_examples_for Marketo::AbstractClient do
+shared_examples_for MarketoApi::AbstractClient do
 end
 
-describe Marketo::AbstractClient do
-  it_behaves_like Marketo::AbstractClient
+describe MarketoApi::AbstractClient do
+  it_behaves_like MarketoApi::AbstractClient
 end

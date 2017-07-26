@@ -5,7 +5,7 @@ module MiddlewareExampleGroup
       let(:env)            { { request_headers: {}, response_headers: {} } }
       let(:retries)        { 3 }
       let(:options)        { {} }
-      let(:client)         { double(Marketo::AbstractClient) }
+      let(:client)         { double(MarketoApi::AbstractClient) }
       let(:auth_callback)  { double(Proc) }
 
       let(:success_response) do
@@ -53,7 +53,7 @@ shared_examples_for 'authentication middleware' do
       it 'raises an exception' do
         expect {
           middleware.authenticate!
-        }.to raise_error Marketo::AuthenticationError, /^invalid_grant: .*/
+        }.to raise_error MarketoApi::AuthenticationError, /^invalid_grant: .*/
       end
     end
   end

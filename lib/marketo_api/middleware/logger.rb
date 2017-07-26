@@ -1,6 +1,6 @@
 require 'forwardable'
 
-module Marketo
+module MarketoApi
   class Middleware::Logger < Faraday::Response::Middleware
     extend Forwardable
 

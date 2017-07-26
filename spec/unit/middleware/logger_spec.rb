@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Middleware::Logger do
+describe MarketoApi::Middleware::Logger do
   let(:logger)     { double('logger') }
   let(:middleware) { described_class.new app, logger, options }
 

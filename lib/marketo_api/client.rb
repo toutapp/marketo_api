@@ -1,3 +1,3 @@
-module Marketo
+module MarketoApi
   Client = Data::Client
 end

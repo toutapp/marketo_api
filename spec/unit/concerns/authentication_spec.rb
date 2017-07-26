@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Concerns::Authentication do
+describe MarketoApi::Concerns::Authentication do
   describe '.authenticate!' do
     subject(:authenticate!) { client.authenticate! }
 
@@ -10,7 +10,7 @@ describe Marketo::Concerns::Authentication do
       end
 
       it "raises an error" do
-        expect { authenticate! }.to raise_error Marketo::AuthenticationError,
+        expect { authenticate! }.to raise_error MarketoApi::AuthenticationError,
                                                 'No authentication middleware present'
       end
     end
@@ -35,7 +35,7 @@ describe Marketo::Concerns::Authentication do
     subject { client.authentication_middleware }
 
     context 'when oauth options are provided' do
-      it { should eq Marketo::Middleware::Authentication::Token }
+      it { should eq MarketoApi::Middleware::Authentication::Token }
     end
   end
 end

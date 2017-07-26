@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   module Concerns
     module Base
       attr_reader :options
@@ -28,8 +28,8 @@ module Marketo
       def initialize(opts = {})
         raise ArgumentError, 'Please specify a hash of options' unless opts.is_a?(Hash)
 
-        @options = Hash[Marketo.configuration.options.map do |option|
-          [option, Marketo.configuration.send(option)]
+        @options = Hash[MarketoApi.configuration.options.map do |option|
+          [option, MarketoApi.configuration.send(option)]
         end]
 
         @options.merge! opts

@@ -1,12 +1,12 @@
-module Marketo
+module MarketoApi
   # Base class that all middleware can extend. Provides some convenient helper
   # functions.
   class Middleware < Faraday::Middleware
-    autoload :RaiseError,     'marketo/middleware/raise_error'
-    autoload :Authentication, 'marketo/middleware/authentication'
-    autoload :Authorization,  'marketo/middleware/authorization'
-    autoload :Caching,        'marketo/middleware/caching'
-    autoload :Logger,         'marketo/middleware/logger'
+    autoload :RaiseError,     'marketo_api/middleware/raise_error'
+    autoload :Authentication, 'marketo_api/middleware/authentication'
+    autoload :Authorization,  'marketo_api/middleware/authorization'
+    autoload :Caching,        'marketo_api/middleware/caching'
+    autoload :Logger,         'marketo_api/middleware/logger'
 
     def initialize(app, client, options)
       @app = app

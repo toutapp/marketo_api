@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'marketo-api'
+require 'marketo_api'
 
 require 'irb'
 require 'irb/completion'

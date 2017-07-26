@@ -32,7 +32,7 @@ module ClientIntegrationExampleGroup
     config.include self,
                    example_group: {
                      describes: lambda do |described|
-                       described <= Marketo::AbstractClient
+                       described <= MarketoApi::AbstractClient
                      end,
                      file_path: %r{spec/integration}
                    }

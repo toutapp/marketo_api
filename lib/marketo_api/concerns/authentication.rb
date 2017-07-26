@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   module Concerns
     module Authentication
       # Public: Force an authentication
@@ -13,7 +13,7 @@ module Marketo
 
       # Internal: Determines what middleware will be used based on the options provided
       def authentication_middleware
-        Marketo::Middleware::Authentication::Token
+        MarketoApi::Middleware::Authentication::Token
       end
     end
   end

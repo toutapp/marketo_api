@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   module Data
     class Client < AbstractClient
       # Public: Returns a url to the resource.

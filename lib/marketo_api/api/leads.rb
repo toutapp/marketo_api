@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   module API
     module Leads
       include Base

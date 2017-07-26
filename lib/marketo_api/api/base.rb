@@ -1,10 +1,10 @@
 require 'uri'
-require 'marketo/concerns/verbs'
+require 'marketo_api/concerns/verbs'
 
-module Marketo
+module MarketoApi
   module API
     module Base
-      extend Marketo::Concerns::Verbs
+      extend MarketoApi::Concerns::Verbs
 
       # Public: Helper methods for performing arbitrary actions against the API using
       # various HTTP verbs.

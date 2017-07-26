@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   class Middleware::Caching < FaradayMiddleware::Caching
     def call(env)
       expire(cache_key(env)) unless use_cache?
@@ -21,7 +21,7 @@ module Marketo
 
     def hashed_auth_header(env)
       Digest::SHA1.hexdigest(
-        env[:request_headers][Marketo::Middleware::Authorization::AUTH_HEADER]
+        env[:request_headers][MarketoApi::Middleware::Authorization::AUTH_HEADER]
       )
     end
   end

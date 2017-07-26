@@ -8,13 +8,13 @@ describe Marketo do
   end
 
   after do
-    Marketo.instance_variable_set :@configuration, nil
+    MarketoApi.instance_variable_set :@configuration, nil
   end
 
   describe '#configuration' do
-    subject { Marketo.configuration }
+    subject { MarketoApi.configuration }
 
-    it { should be_a Marketo::Configuration }
+    it { should be_a MarketoApi::Configuration }
 
     context 'by default' do
       its(:api_version)            { should eq '1' }
@@ -47,16 +47,16 @@ describe Marketo do
      :timeout, :oauth_token, :instance_url, :api_version,
      :ssl, :request_headers, :log_level, :logger].each do |attr|
       it "allows #{attr} to be set" do
-        Marketo.configure do |config|
+        MarketoApi.configure do |config|
           config.send("#{attr}=", 'foobar')
         end
-        expect(Marketo.configuration.send(attr)).to eq 'foobar'
+        expect(MarketoApi.configuration.send(attr)).to eq 'foobar'
       end
     end
   end
 
   describe '#log?' do
-    subject { Marketo.log? }
+    subject { MarketoApi.log? }
 
     context 'by default' do
       it { should be_false }
@@ -66,48 +66,48 @@ describe Marketo do
   describe '#log' do
     context 'with logging disabled' do
       before do
-        Marketo.stub log?: false
+        MarketoApi.stub log?: false
       end
 
       it 'doesnt log anytning' do
-        Marketo.configuration.logger.should_not_receive(:debug)
-        Marketo.log 'foobar'
+        MarketoApi.configuration.logger.should_not_receive(:debug)
+        MarketoApi.log 'foobar'
       end
     end
 
     context 'with logging enabled' do
-      before { Marketo.stub(log?: true) }
+      before { MarketoApi.stub(log?: true) }
 
       it 'logs something' do
-        Marketo.configuration.logger.should_receive(:debug).with('foobar')
-        Marketo.log 'foobar'
+        MarketoApi.configuration.logger.should_receive(:debug).with('foobar')
+        MarketoApi.log 'foobar'
       end
 
       context "with a custom logger" do
         let(:fake_logger) { double(debug: true) }
 
         before do
-          Marketo.configure do |config|
+          MarketoApi.configure do |config|
             config.logger = fake_logger
           end
         end
 
         it "logs using the provided logger" do
           fake_logger.should_receive(:debug).with('foobar')
-          Marketo.log('foobar')
+          MarketoApi.log('foobar')
         end
       end
 
       context "with a custom log_level" do
         before do
-          Marketo.configure do |config|
+          MarketoApi.configure do |config|
             config.log_level = :info
           end
         end
 
         it 'logs with the provided log_level' do
-          Marketo.configuration.logger.should_receive(:info).with('foobar')
-          Marketo.log 'foobar'
+          MarketoApi.configuration.logger.should_receive(:info).with('foobar')
+          MarketoApi.log 'foobar'
         end
       end
     end
@@ -117,7 +117,7 @@ describe Marketo do
     it 'calls its block' do
       checker = double(:block_checker)
       expect(checker).to receive(:check!).once
-      Marketo.new do |builder|
+      MarketoApi.new do |builder|
         checker.check!
       end
     end

@@ -1,15 +1,15 @@
-module Marketo
+module MarketoApi
   # Faraday middleware that allows for on the fly authentication of requests.
   # When a request fails (a status of 401 is returned), the middleware
   # will attempt to either reauthenticate (request new access_token).
-  class Middleware::Authentication < Marketo::Middleware
-    autoload :Token,    'marketo/middleware/authentication/token'
+  class Middleware::Authentication < MarketoApi::Middleware
+    autoload :Token,    'marketo_api/middleware/authentication/token'
 
     # Rescue from 401's, authenticate then raise the error again so the client
     # can reissue the request.
     def call(env)
       @app.call(env)
-    rescue Marketo::UnauthorizedError
+    rescue MarketoApi::UnauthorizedError
       authenticate!
       raise
     end
@@ -22,9 +22,9 @@ module Marketo
       response = connection.get(url)
 
       if response.status >= 500
-        raise Marketo::ServerError, error_message(response)
+        raise MarketoApi::ServerError, error_message(response)
       elsif response.status != 200
-        raise Marketo::AuthenticationError, error_message(response)
+        raise MarketoApi::AuthenticationError, error_message(response)
       end
 
       @options[:oauth_token]  = response.body['access_token']
@@ -44,9 +44,9 @@ module Marketo
         builder.use Faraday::Request::UrlEncoded
         builder.response :json
 
-        builder.use Marketo::Middleware::Logger,
-                    Marketo.configuration.logger,
-                    @options if Marketo.log?
+        builder.use MarketoApi::Middleware::Logger,
+                    MarketoApi.configuration.logger,
+                    @options if MarketoApi.log?
 
         builder.adapter @options[:adapter]
       end

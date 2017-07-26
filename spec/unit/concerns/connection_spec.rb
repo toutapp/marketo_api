@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Concerns::Connection do
+describe MarketoApi::Concerns::Connection do
   describe '.middleware' do
     subject       { client.middleware }
     let(:builder) { double('Faraday::Builder') }
@@ -29,11 +29,11 @@ describe Marketo::Concerns::Connection do
         client.stub(:authentication_middleware)
         client.stub(:cache)
         client.stub(options: options)
-        Marketo.stub(log?: true)
+        MarketoApi.stub(log?: true)
       end
 
       it "must always be used last before the Faraday Adapter" do
-        client.middleware.handlers.reverse.index(Marketo::Middleware::Logger).
+        client.middleware.handlers.reverse.index(MarketoApi::Middleware::Logger).
           should eq 1
       end
     end

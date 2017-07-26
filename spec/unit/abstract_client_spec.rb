@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Marketo::AbstractClient do
+describe MarketoApi::AbstractClient do
   subject { described_class }
 
-  it { should < Marketo::Concerns::Base }
-  it { should < Marketo::Concerns::Connection }
-  it { should < Marketo::Concerns::Authentication }
-  it { should < Marketo::Concerns::Caching }
+  it { should < MarketoApi::Concerns::Base }
+  it { should < MarketoApi::Concerns::Connection }
+  it { should < MarketoApi::Concerns::Authentication }
+  it { should < MarketoApi::Concerns::Caching }
 
-  it { should < Marketo::API::Base }
-  it { should < Marketo::API::Leads }
-  it { should < Marketo::API::Activities }
+  it { should < MarketoApi::API::Base }
+  it { should < MarketoApi::API::Leads }
+  it { should < MarketoApi::API::Activities }
 end

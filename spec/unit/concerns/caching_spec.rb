@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Concerns::Caching do
+describe MarketoApi::Concerns::Caching do
   describe '.without_caching' do
     let(:options) { double('Options') }
 

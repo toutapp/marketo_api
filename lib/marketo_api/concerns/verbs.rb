@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   module Concerns
     module Verbs
       # Internal: Define methods to handle a verb.
@@ -32,7 +32,7 @@ module Marketo
         define_method verb do |*args, &block|
           begin
             connection.send(verb, *args, &block)
-          rescue Marketo::UnauthorizedError
+          rescue MarketoApi::UnauthorizedError
             raise
           end
         end

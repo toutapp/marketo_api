@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Marketo::Client do
+describe MarketoApi::Client do
   subject { described_class }
 
-  it { should < Marketo::AbstractClient }
+  it { should < MarketoApi::AbstractClient }
 end

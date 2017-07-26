@@ -4,7 +4,7 @@ module FixtureHelpers
       options = {
         method: :get,
         status: 200,
-        api_version: Marketo.configuration.api_version
+        api_version: MarketoApi.configuration.api_version
       }.merge(options)
 
       stub = stub_request(options[:method],

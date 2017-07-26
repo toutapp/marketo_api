@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Marketo::Middleware::Authentication do
+describe MarketoApi::Middleware::Authentication do
   let(:options) do
     {
       instance_url: 'https://lfdjafldj.marketo.com',
@@ -29,10 +29,10 @@ describe Marketo::Middleware::Authentication do
         env.stub body: 'foo', request: { proxy: nil }
         middleware.stub :authenticate!
         app.should_receive(:call).once.
-          and_raise(Marketo::UnauthorizedError.new('something bad'))
+          and_raise(MarketoApi::UnauthorizedError.new('something bad'))
       end
 
-      it { should raise_error Marketo::UnauthorizedError }
+      it { should raise_error MarketoApi::UnauthorizedError }
     end
   end
 
@@ -46,24 +46,24 @@ describe Marketo::Middleware::Authentication do
 
       context 'with logging disabled' do
         before do
-          Marketo.stub log?: false
+          MarketoApi.stub log?: false
         end
 
         its(:handlers) {
           should include FaradayMiddleware::ParseJson,
                          Faraday::Adapter::NetHttp
         }
-        its(:handlers) { should_not include Marketo::Middleware::Logger  }
+        its(:handlers) { should_not include MarketoApi::Middleware::Logger  }
       end
 
       context 'with logging enabled' do
         before do
-          Marketo.stub log?: true
+          MarketoApi.stub log?: true
         end
 
         its(:handlers) {
           should include FaradayMiddleware::ParseJson,
-                         Marketo::Middleware::Logger, Faraday::Adapter::NetHttp
+                         MarketoApi::Middleware::Logger, Faraday::Adapter::NetHttp
         }
       end
 

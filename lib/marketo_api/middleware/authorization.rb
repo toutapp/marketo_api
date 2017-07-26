@@ -1,7 +1,7 @@
-module Marketo
+module MarketoApi
   # Piece of middleware that simply injects the OAuth token into the request
   # headers.
-  class Middleware::Authorization < Marketo::Middleware
+  class Middleware::Authorization < MarketoApi::Middleware
     AUTH_HEADER = 'Authorization'.freeze
 
     def call(env)

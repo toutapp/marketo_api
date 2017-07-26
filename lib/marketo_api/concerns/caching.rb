@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   module Concerns
     module Caching
       # Public: Runs the block with caching disabled.

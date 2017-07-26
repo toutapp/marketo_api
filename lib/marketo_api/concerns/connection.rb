@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   module Concerns
     module Connection
       # Public: The Faraday::Builder instance used for the middleware stack. This
@@ -28,23 +28,23 @@ module Marketo
             builder.use    authentication_middleware, self, options
           end
           # Sets the oauth token in the headers.
-          builder.use      Marketo::Middleware::Authorization, self, options
+          builder.use      MarketoApi::Middleware::Authorization, self, options
           # Ensures the instance url is set.
-          # builder.use      Marketo::Middleware::InstanceURL, self, options
+          # builder.use      MarketoApi::Middleware::InstanceURL, self, options
           # Caches GET requests.
-          builder.use      Marketo::Middleware::Caching, cache, options if cache
+          builder.use      MarketoApi::Middleware::Caching, cache, options if cache
           # Follows 30x redirects.
           builder.use      FaradayMiddleware::FollowRedirects
           # Raises errors for 40x responses.
-          builder.use      Marketo::Middleware::RaiseError
+          builder.use      MarketoApi::Middleware::RaiseError
           # Parses returned JSON response into a hash.
           builder.response :json, content_type: /\bjson$/
           # Inject custom headers into requests
-          # builder.use      Marketo::Middleware::CustomHeaders, self, options
+          # builder.use      MarketoApi::Middleware::CustomHeaders, self, options
           # Log request/responses
-          builder.use      Marketo::Middleware::Logger,
-                           Marketo.configuration.logger,
-                           options if Marketo.log?
+          builder.use      MarketoApi::Middleware::Logger,
+                           MarketoApi.configuration.logger,
+                           options if MarketoApi.log?
 
           builder.adapter  adapter
         end

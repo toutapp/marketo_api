@@ -1,4 +1,4 @@
-module Marketo
+module MarketoApi
   class Middleware::RaiseError < Faraday::Response::Middleware
     def on_complete(env)
       @env = env
@@ -8,7 +8,7 @@ module Marketo
                                               "more than one record",
                                               response_values)
       when 401
-        raise Marketo::UnauthorizedError, message
+        raise MarketoApi::UnauthorizedError, message
       when 404
         raise Faraday::Error::ResourceNotFound, message
       when 413
