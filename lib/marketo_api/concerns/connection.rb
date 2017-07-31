@@ -56,9 +56,11 @@ module MarketoApi
 
       # Internal: Faraday Connection options
       def connection_options
-        { request: {
+        {
+          request: {
             timeout: options[:timeout],
-            open_timeout: options[:timeout] },
+            open_timeout: options[:timeout]
+          },
           ssl: options[:ssl]
         }
       end
