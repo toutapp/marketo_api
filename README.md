@@ -18,6 +18,13 @@ client = MarketoApi::Client.new(...)
 
 ## Development
 
+- Use the gem locally TODO
+
 ## Testing
 
+- How? TODO
+- Coverage: TODO
+
 ## LICENSE
+
+TODO
