@@ -3,7 +3,7 @@ module MarketoApi
   # When a request fails (a status of 401 is returned), the middleware
   # will attempt to either reauthenticate (request new access_token).
   class Middleware::Authentication < MarketoApi::Middleware
-    autoload :Token,    'marketo_api/middleware/authentication/token'
+    autoload :Token, 'marketo_api/middleware/authentication/token'
 
     # Rescue from 401's, authenticate then raise the error again so the client
     # can reissue the request.
@@ -41,14 +41,12 @@ module MarketoApi
     # Internal: Faraday connection to use when sending an authentication request.
     def connection
       @connection ||= Faraday.new(faraday_options) do |builder|
-        builder.use Faraday::Request::UrlEncoded
-        builder.response :json
+        builder.use(Faraday::Request::UrlEncoded)
+        builder.response(:json)
 
-        builder.use MarketoApi::Middleware::Logger,
-                    MarketoApi.configuration.logger,
-                    @options if MarketoApi.log?
+        builder.use(MarketoApi::Middleware::Logger, MarketoApi.configuration.logger, @options) if MarketoApi.log?
 
-        builder.adapter @options[:adapter]
+        builder.adapter(@options[:adapter])
       end
     end
 

@@ -20,9 +20,7 @@ module MarketoApi
     end
 
     def hashed_auth_header(env)
-      Digest::SHA1.hexdigest(
-        env[:request_headers][MarketoApi::Middleware::Authorization::AUTH_HEADER]
-      )
+      Digest::SHA1.hexdigest(env[:request_headers][MarketoApi::Middleware::Authorization::AUTH_HEADER])
     end
   end
 end
