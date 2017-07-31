@@ -1,32 +1,35 @@
-require File.expand_path('../lib/marketo_api/version', __FILE__)
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'marketo_api/version'
 
-Gem::Specification.new do |gem|
-  gem.authors       = ['Ami Bhatt']
-  gem.name          = 'marketo_api'
-  gem.version       = MarketoApi::VERSION
-  gem.summary       = gem.description = %q{Ruby REST API wrapper for Marketo}
-  gem.homepage      = 'https://github.com/toutapp/marketo'
-  # gem.license       = 'MIT'
+Gem::Specification.new do |spec|
+  spec.authors       = ['Ami Bhatt']
+  spec.name          = 'marketo_api'
+  spec.version       = MarketoApi::VERSION
+  spec.summary       = spec.description = %q{Ruby REST API wrapper for Marketo}
+  spec.homepage      = 'https://github.com/toutapp/marketo'
+  # spec.license       = 'MIT'
 
-  gem.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  gem.bindir        = 'exe'
-  gem.executables   = gem.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ['lib']
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.bindir        = 'exe'
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ['lib']
 
-  gem.required_ruby_version = '>= 2.0'
+  spec.required_ruby_version = '>= 2.0'
 
-  gem.add_dependency 'faraday_middleware', '~> 0.11.0.1'
-  gem.add_dependency 'faraday', '~> 0.12.2'
-  gem.add_dependency 'hashie', '~> 3.5.6'
-  gem.add_dependency 'json', '>= 1.7.5'
+  spec.add_dependency 'faraday_middleware', '~> 0.11.0.1'
+  spec.add_dependency 'faraday', '~> 0.12.2'
+  spec.add_dependency 'hashie', '~> 3.5.6'
+  spec.add_dependency 'json', '>= 1.7.5'
 
-  gem.add_development_dependency 'rake', '~> 12.0.0'
-  gem.add_development_dependency 'rspec', '~> 3.6.0'
-  gem.add_development_dependency 'guard'
-  gem.add_development_dependency 'guard-rspec'
-  gem.add_development_dependency 'guard-rubocop'
-  gem.add_development_dependency 'rubocop', '~> 0.49.1'
-  gem.add_development_dependency 'simplecov', '~> 0.14.1'
-  gem.add_development_dependency 'webmock', '~> 1.13.0'
+  spec.add_development_dependency 'rake', '~> 12.0.0'
+  spec.add_development_dependency 'rspec', '~> 3.6.0'
+  spec.add_development_dependency 'guard'
+  spec.add_development_dependency 'guard-rspec'
+  spec.add_development_dependency 'guard-rubocop'
+  spec.add_development_dependency 'rubocop', '~> 0.49.1'
+  spec.add_development_dependency 'simplecov', '~> 0.14.1'
+  spec.add_development_dependency 'webmock', '~> 1.13.0'
 end
