@@ -23,6 +23,9 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency 'rake', '~> 12.0.0'
   gem.add_development_dependency 'rspec', '~> 3.6.0'
+  gem.add_development_dependency 'guard'
+  gem.add_development_dependency 'guard-rspec'
+  gem.add_development_dependency 'guard-rubocop'
   gem.add_development_dependency 'rubocop', '~> 0.49.1'
   gem.add_development_dependency 'simplecov', '~> 0.14.1'
   gem.add_development_dependency 'webmock', '~> 1.13.0'
