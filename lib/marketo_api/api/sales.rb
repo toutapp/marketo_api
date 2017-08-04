@@ -7,7 +7,7 @@ module MarketoApi
         api_get('sales/bestbets.json', attrs)
       end
 
-      def best_bets(attrs)
+      def interesting_moments(attrs)
         api_get('sales/interestingmoments.json', attrs)
       end
 
