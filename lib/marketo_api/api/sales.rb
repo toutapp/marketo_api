@@ -1,10 +1,14 @@
-module Marketo
+module MarketoApi
   module API
     module Sales
       include Base
 
       def best_bets(attrs)
         api_get('sales/bestbets.json', attrs)
+      end
+
+      def best_bets(attrs)
+        api_get('sales/interestingmoments.json', attrs)
       end
 
       def add_next_page_token(path, token)
