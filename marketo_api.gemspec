@@ -1,15 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
 require 'marketo_api/version'
 
 Gem::Specification.new do |spec|
   spec.authors       = ['Ami Bhatt']
   spec.name          = 'marketo_api'
   spec.version       = MarketoApi::VERSION
-  spec.summary       = spec.description = %q{Ruby REST API wrapper for Marketo}
-  spec.homepage      = 'https://github.com/toutapp/marketo'
-  # spec.license       = 'MIT'
+  spec.summary       = spec.description = %q{Marketo REST API ruby gem}
+  spec.homepage      = 'https://github.com/toutapp/marketo_api'
+  spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'
