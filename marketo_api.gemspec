@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'marketo_api/version'
 
 Gem::Specification.new do |spec|
-  spec.authors       = ['Ami Bhatt']
+  spec.authors       = ['Ami Bhatt', 'Mohnish Thallavajhula']
   spec.name          = 'marketo_api'
   spec.version       = MarketoApi::VERSION
   spec.summary       = spec.description = %q{Marketo REST API ruby gem}
