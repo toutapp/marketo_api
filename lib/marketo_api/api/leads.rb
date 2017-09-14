@@ -77,7 +77,6 @@ module MarketoApi
       #      }
       #
       def leads_by_filter_type(filter_type, filter_values)
-        filter_values = filter_values.join(',') if filter_values.is_a?(Array)
         type_param = "filterType=#{filter_type}"
         values_param = "filterValues=#{format_filter_values(filter_values)}"
         api_get("leads.json?#{type_param}&#{values_param}")
