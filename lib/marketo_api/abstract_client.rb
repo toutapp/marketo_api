@@ -6,7 +6,8 @@ module MarketoApi
     include MarketoApi::Concerns::Caching
 
     include MarketoApi::API::Base
-    include MarketoApi::API::Leads
     include MarketoApi::API::Activities
+    include MarketoApi::API::Leads
+    include MarketoApi::API::Sales
   end
 end
