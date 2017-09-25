@@ -55,10 +55,6 @@ module MarketoApi
         path << "?#{add_activity_type_ids(type_ids)}" if type_ids.present?
         api_get(add_next_page_token(path, next_page_token))
       end
-
-      def interesting_moments(attrs)
-        api_get('activities/interesting_moments.json', attrs)
-      end
     end
   end
 end
