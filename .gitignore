@@ -21,3 +21,4 @@ tmp
 *.swp
 junk.rb
 Gemfile.lock
+tags
