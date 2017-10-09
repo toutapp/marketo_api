@@ -17,9 +17,6 @@ module MarketoApi
         api_get('activities/types.json')
       end
 
-      def activities
-      end
-
       def paging_token(start_time)
         if start_time.present?
           mod_time = start_time.iso8601
