@@ -22,6 +22,7 @@ module MarketoApi
     autoload :Base,           'marketo_api/api/base'
     autoload :Leads,          'marketo_api/api/leads'
     autoload :Sales,          'marketo_api/api/sales'
+    autoload :Stats,          'marketo_api/api/stats'
     autoload :Activities,     'marketo_api/api/activities'
   end
 
