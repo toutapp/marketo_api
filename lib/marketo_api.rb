@@ -25,23 +25,11 @@ module MarketoApi
     autoload :Activities,     'marketo_api/api/activities'
   end
 
-  module Data
-    autoload :Client, 'marketo_api/data/client'
-  end
-
   Error               = Class.new(StandardError)
   ServerError         = Class.new(Error)
   AuthenticationError = Class.new(Error)
   UnauthorizedError   = Class.new(Error)
   APIVersionError     = Class.new(Error)
-
-  class << self
-    def new(*args, &block)
-      Data::Client.new(*args, &block)
-    end
-
-    alias_method :data, :new
-  end
 
   # Add .tap method in Ruby 1.8
   module CoreExtensions
