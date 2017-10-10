@@ -42,14 +42,19 @@ module MarketoApi
         end
       end
 
+      # FIXME: (MT) Refactor this
       def activities_by_lead_ids(lead_ids, type_ids, next_page_token=nil)
+        # FIXME: (MT) Raise an error when lead_ids is empty
         path = "activities.json"
         path << "?leadIds=#{format_filter_values(lead_ids)}" if lead_ids
         path << "&#{add_activity_type_ids(type_ids)}" if type_ids
         api_get(add_next_page_token(path, next_page_token))
       end
 
+      # FIXME: (MT) Refactor this
       def activities_by_type_id(type_ids, next_page_token=nil)
+        # FIXME: (MT) Rename method to support plural (type_ids)
+        # FIXME: (MT) Raise an error when type_ids is empty
         path = "activities.json"
         path << "?#{add_activity_type_ids(type_ids)}" if type_ids
         api_get(add_next_page_token(path, next_page_token))

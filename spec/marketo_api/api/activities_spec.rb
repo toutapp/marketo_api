@@ -55,6 +55,16 @@ describe MarketoApi::API::Activities do
   end
 
   describe '#activities_by_lead_ids' do
+    it 'calls activities.json endpoint' do
+      expect(subject).to receive(:api_get).with('activities.json?leadIds=1,2,3&activityTypeIds=1,2,3')
+      subject.activities_by_lead_ids([1,2,3], [1,2,3])
+    end
+  end
 
+  describe '#activities_by_type_id' do
+    it 'calls activities.json endpoint' do
+      expect(subject).to receive(:api_get).with('activities.json?activityTypeIds=1,2,3')
+      subject.activities_by_type_id([1,2,3])
+    end
   end
 end

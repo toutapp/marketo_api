@@ -18,6 +18,7 @@ module MarketoApi
       # Returns the Faraday::Response.
       define_verbs :get, :post, :put, :delete, :patch, :head
 
+      # TODO: (MT) Move this to a helper
       def format_filter_values(filter_values)
         filter_values = filter_values.join(',') if filter_values.is_a?(Array)
         filter_values
