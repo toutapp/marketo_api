@@ -26,7 +26,7 @@ module MarketoApi
       #                                   appended to each request
 
       def initialize(opts = {})
-        raise ArgumentError, 'Please specify a hash of options' unless opts.is_a?(Hash)
+        fail ArgumentError.new('Please specify a hash of options') unless opts.is_a?(Hash)
 
         @options = Hash[MarketoApi.configuration.options.map do |option|
           [option, MarketoApi.configuration.send(option)]
