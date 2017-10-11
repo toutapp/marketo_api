@@ -5,6 +5,7 @@ require 'bundler/setup'
 Bundler.require :default, :test
 
 require 'webmock/rspec'
+require 'pry'
 
 WebMock.disable_net_connect!
 
