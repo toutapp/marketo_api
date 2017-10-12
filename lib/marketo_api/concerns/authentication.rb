@@ -4,7 +4,7 @@ module MarketoApi
       # Public: Force an authentication
       def authenticate!
         unless authentication_middleware
-          raise AuthenticationError, 'No authentication middleware present'
+          fail AuthenticationError.new('No authentication middleware present')
         end
 
         middleware = authentication_middleware.new nil, self, options
