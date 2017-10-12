@@ -1,29 +1,18 @@
 require 'spec_helper'
 
 describe MarketoApi::Concerns::Caching do
-  describe '.without_caching' do
-    let(:options) { double('Options') }
+  subject { Class.new.extend(MarketoApi::Concerns::Caching) }
+
+  describe '#without_caching' do
+    let(:blk) { lambda{} }
 
     before do
-      client.stub options: options
+      allow(subject).to receive(:options).and_return({})
     end
 
-    it 'runs the block with caching disabled' do
-      options.should_receive(:[]=).with(:use_cache, false)
-      options.should_receive(:delete).with(:use_cache)
-      expect { |b| client.without_caching(&b) }.to yield_control
-    end
-
-    context 'when an exception is raised' do
-      it 'ensures the :use_cache is deleted' do
-        options.should_receive(:[]=).with(:use_cache, false)
-        options.should_receive(:delete).with(:use_cache)
-        expect {
-          client.without_caching do
-            raise 'Foo'
-          end
-        }.to raise_error 'Foo'
-      end
+    it 'calls the passed in block' do
+      expect(blk).to receive(:call)
+      subject.without_caching(&blk)
     end
   end
 end
