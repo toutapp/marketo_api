@@ -1,41 +1,33 @@
 require 'spec_helper'
 
 describe MarketoApi::Concerns::Authentication do
-  describe '.authenticate!' do
-    subject(:authenticate!) { client.authenticate! }
+  subject { Class.new.extend(MarketoApi::Concerns::Authentication) }
 
-    context 'when there is no authentication middleware' do
-      before do
-        client.stub authentication_middleware: nil
-      end
+  describe '#authenticate!' do
+    context 'when no authentication middleware is present' do
+      before { allow(subject).to receive(:authentication_middleware).and_return(false) }
 
-      it "raises an error" do
-        expect { authenticate! }.to raise_error MarketoApi::AuthenticationError,
-                                                'No authentication middleware present'
+      it 'raises an error' do
+        expect{ subject.authenticate! }.to raise_error(MarketoApi::AuthenticationError, 'No authentication middleware present')
       end
     end
 
-    context 'when there is authentication middleware' do
-      let(:authentication_middleware) { double('Authentication Middleware') }
-      subject(:result) { client.authenticate! }
+    context 'when an authentication middleware is present' do
+      let(:middleware_mock) { double('authentication_middleware') }
 
-      it 'authenticates using the middleware' do
-        client.stub authentication_middleware: authentication_middleware
-        client.stub :options
-        authentication_middleware.
-          should_receive(:new).
-          with(nil, client, client.options).
-          and_return(double(authenticate!: 'foo'))
-        expect(result).to eq 'foo'
+      before { allow(subject).to receive(:options) }
+
+      it 'authenticates the middleware' do
+        expect(MarketoApi::Middleware::Authentication::Token).to receive(:new).and_return(middleware_mock)
+        expect(middleware_mock).to receive(:authenticate!)
+        subject.authenticate!
       end
     end
   end
 
-  describe '.authentication_middleware' do
-    subject { client.authentication_middleware }
-
-    context 'when oauth options are provided' do
-      it { should eq MarketoApi::Middleware::Authentication::Token }
+  describe '#authentication_middleware' do
+    it 'returns MarketoApi::Middleware::Authentication::Token' do
+      expect(subject.authentication_middleware).to eql(MarketoApi::Middleware::Authentication::Token)
     end
   end
 end
