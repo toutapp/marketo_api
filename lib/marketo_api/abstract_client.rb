@@ -9,5 +9,6 @@ module MarketoApi
     include MarketoApi::API::Activities
     include MarketoApi::API::Leads
     include MarketoApi::API::Sales
+    include MarketoApi::API::Campaigns
   end
 end
