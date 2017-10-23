@@ -6,23 +6,25 @@ module MarketoApi
       # Public: Executes specific entity request and returns the result.
       #
       # Example
-      #   # Find the specific lead
-      #   client.leads_by_id(318581)
+      #   # Find the specific campaign
+      #   client.campaign_by_id(3711)
       #   # => {
-      #         "requestId": "10226#14d3049e51b",
-      #         "success": true,
-      #         "result": [
+      #          "requestId": "717#15f4b51ed20"
+      #          "success": "true"
+      #          "result": [
       #            {
-      #               "id": 318581,
-      #               "updatedAt":"2015-05-07T11:47:30-08:00"
-      #               "lastName": "Doe",
-      #               "email": "jdoe@marketo.com",
-      #               "createdAt": "2015-05-01T16:47:30-08:00",
-      #               "firstName": "John"
+      #              "id": "3711"
+      #              "name": "John Clark - Smart Campaign"
+      #              "type": "trigger"
+      #              "programName": "John Clark - Request Campaign.John Clark - Email Program"
+      #              "programId": "1073"
+      #              "workspaceName": "Default"
+      #              "createdAt": "'2017-02-13T19:58:56Z'"
+      #              "updatedAt": "'2017-02-13T20:06:29Z'"
+      #              "active": "true"
       #            }
-      #         ]
-      #      }
-      #
+      #          ]
+      #        }
       def campaign_by_id(id)
         api_get("campaigns/#{id}.json")
       end
@@ -31,35 +33,29 @@ module MarketoApi
       # Required Permissions: Read-Only Campaigns, Read-Write Campaigns
       #
       # Example
-      #   # Find the specific lead
-      #   client.leads_by_filter_type('email',
-      #                               ['abe@usa.gov', 'george@usa.gov'])
+      #   # Find the specific campaign
+      #   client.campaigns_by_workspace(true)
       #   # => {
-      #     "requestId": "12951#15699db5c97",
-      #     "result": [
-      #       {
-      #           "id": 318581,
-      #           "updatedAt": "2016-05-17T22:11:45Z",
-      #           "lastName": "Lincoln",
-      #           "email": "abe@usa.gov",
-      #           "createdAt": "2015-03-17T00:18:40Z",
-      #           "firstName": "Abraham"
-      #       },
-      #       {
-      #           "id": 318592,
-      #           "updatedAt": "2016-05-17T22:20:51Z",
-      #           "lastName": "Washington",
-      #           "email": "george@usa.gov",
-      #           "createdAt": "2015-04-06T16:29:21Z",
-      #           "firstName": "George"
-      #       }
-      #     ],
-      #     "success": true
-      #   }
+      #          "requestId": "cab#15f4b36d1ca"
+      #          "success": "true"
+      #          "result": [
+      #            {
+      #              "id": "3711"
+      #              "name": "John Clark - Smart Campaign"
+      #              "type": "trigger"
+      #              "programName": "John Clark - Request Campaign.John Clark - Email Program"
+      #              "programId": "1073"
+      #              "workspaceName": "Default"
+      #              "createdAt": "'2017-02-13T19:58:56Z'"
+      #              "updatedAt": "'2017-02-13T20:06:29Z'"
+      #              "active": "true"
+      #            }
+      #          ]
+      #        }
       #
       # If no records are found, the following is returned:
       # # => {
-      #        "requestId": "177a1#1578b643357",
+      #        "requestId": "13cc0#15f4b5134af",
       #        "result": [],
       #        "success": true
       #      }
