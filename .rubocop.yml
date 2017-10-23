@@ -3,7 +3,8 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
-  RunRailsCops: false
+  Rails:
+    Enabled: false
   Include:
     - Rakefile
   Exclude:

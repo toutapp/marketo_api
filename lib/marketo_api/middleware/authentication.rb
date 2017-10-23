@@ -27,7 +27,7 @@ module MarketoApi
         raise MarketoApi::AuthenticationError, error_message(response)
       end
 
-      @options[:oauth_token]  = response.body['access_token']
+      @options[:oauth_token] = response.body['access_token']
       @options[:expires_in]  = response.body['expires_in']
 
       response.body

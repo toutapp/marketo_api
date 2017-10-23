@@ -23,6 +23,7 @@ module MarketoApi
     autoload :Leads,          'marketo_api/api/leads'
     autoload :Sales,          'marketo_api/api/sales'
     autoload :Activities,     'marketo_api/api/activities'
+    autoload :Campaigns,      'marketo_api/api/campaigns'
   end
 
   module Data
