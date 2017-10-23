@@ -42,8 +42,8 @@ To install this gem onto your local machine, run `bin/rake install`. To release 
 
 ## Testing
 
-- How? TODO
-- Coverage: TODO
+- To run the test suite, run `bin/rake`
+- Check Coverage by running `open coverage/index.html` from the gem root
 
 ## Contributing
 
