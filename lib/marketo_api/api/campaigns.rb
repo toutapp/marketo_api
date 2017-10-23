@@ -65,6 +65,53 @@ module MarketoApi
         workspace_param = "workspaceName=#{workspace_name}"
         api_get("campaigns.json?#{triggerable_param}&#{workspace_param}")
       end
+
+      # Public: Passes a set of leads to a trigger campaign to run through the campaign's flow.
+      # The designated campaign must have a Campaign is Requested: Web Service API trigger, and
+      # must be active. My tokens local to the campaign's parent program can be overridden for
+      # the run to customize content.
+      #
+      # Required Permissions: Execute Campaign
+      #
+      #
+      # Example
+      #   # Add lead to trigger campaign
+      #   client.trigger_campaign!(3711, {})
+      #   # => {
+      #          "errors": [
+      #            {
+      #              "code": 0,
+      #              "message": "string"
+      #            }
+      #          ],
+      #          "moreResult": false,
+      #          "nextPageToken": "string",
+      #          "requestId": "string",
+      #          "result": [
+      #            {
+      #              "active": false,
+      #              "createdAt": "string",
+      #              "description": "string",
+      #              "id": 0,
+      #              "name": "string",
+      #              "programId": 0,
+      #              "programName": "string",
+      #              "type": "batch",
+      #              "updatedAt": "string",
+      #              "workspaceName": "string"
+      #            }
+      #          ],
+      #          "success": false,
+      #          "warnings": [
+      #            {
+      #              "code": 0,
+      #              "message": "string"
+      #            }
+      #          ]
+      #        }
+      def trigger_campaign!(campaign_id, attrs)
+        api_post("campaigns/#{campaign_id}/trigger.json", attrs)
+      end
     end
   end
 end
