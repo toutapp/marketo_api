@@ -53,22 +53,13 @@ describe MarketoApi::Middleware::RaiseError do
       end
     end
 
-    context 'when status is 400..600 and body is a string' do
+    context 'when status is 400+ and body is a string' do
       let(:body)   { 'An error occured' }
       let(:status) { 404 }
 
       it 'raises an error with a non-existing error code' do
         expect { on_complete }.to raise_error Faraday::Error::ClientError,
                                               "(error code missing): #{body}"
-      end
-    end
-
-    context 'when the status code is 602..603' do
-      let(:status) { 602 }
-
-      it "raises an error" do
-        expect { on_complete }.to raise_error MarketoApi::UnauthorizedError,
-                                              'INVALID_FIELD: error_message'
       end
     end
   end
