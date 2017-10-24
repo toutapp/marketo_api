@@ -16,6 +16,8 @@ module MarketoApi
                                               response_values)
       when 400...600
         raise Faraday::Error::ClientError.new(message, response_values)
+      when 602..603
+        raise MarketoApi::UnauthorizedError, message
       end
     end
 
