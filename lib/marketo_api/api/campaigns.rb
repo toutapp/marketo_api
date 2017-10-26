@@ -34,7 +34,7 @@ module MarketoApi
       #
       # Example
       #   # Find the specific campaign
-      #   client.campaigns_by_workspace(true)
+      #   client.campaigns_by_workspace('Default')
       #   # => {
       #          "requestId": "cab#15f4b36d1ca"
       #          "success": "true"
@@ -60,10 +60,17 @@ module MarketoApi
       #        "success": true
       #      }
       #
-      def campaigns_by_workspace(is_triggerable, workspace_name = 'Default')
-        triggerable_param = "isTriggerable=#{is_triggerable ? 1 : 0}"
-        workspace_param = "workspaceName=#{workspace_name}"
-        api_get("campaigns.json?#{triggerable_param}&#{workspace_param}")
+      def campaigns_by_workspace(workspace_name = 'Default', options = {})
+        options[:workspaceName] = workspace_name
+        campaigns(options)
+      end
+
+      def campaigns_next_page(next_page_token)
+        campaigns(paging_token_param(next_page_token))
+      end
+
+      def campaigns(options = {})
+        api_get("campaigns.json?#{options.to_query}")
       end
 
       # Public: Passes a set of leads to a trigger campaign to run through the campaign's flow.

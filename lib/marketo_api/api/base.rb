@@ -72,6 +72,21 @@ module MarketoApi
 
       private
 
+      # Internal: Append a nextPageToken to a url if token is present
+      #
+      # Examples
+      #
+      #   add_next_page_token('activities.json?')
+      #   # => '/rest/v1/leads'
+      def add_next_page_token(path, token)
+        path += "&nextPageToken=#{token}" if token
+        path
+      end
+
+      def paging_token_param(token)
+        token.present? ? { nextPageToken: token } : {}
+      end
+
       # Internal: Returns a path to an api endpoint
       #
       # Examples
