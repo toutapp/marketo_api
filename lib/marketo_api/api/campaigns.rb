@@ -65,8 +65,8 @@ module MarketoApi
         campaigns(options)
       end
 
-      def campaigns_next_page(next_page_token)
-        campaigns(paging_token_param(next_page_token))
+      def campaigns_next_page(next_page_token, options = {})
+        campaigns(options.merge(paging_token_param(next_page_token)))
       end
 
       def campaigns(options = {})
