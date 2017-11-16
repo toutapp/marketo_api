@@ -32,7 +32,7 @@ $ gem install marketo_api
 client = MarketoApi::Client.new(...)
 ```
 
-- TODO
+- TODO - MarketoApi Docs
 
 ## Development
 
@@ -53,7 +53,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/toutap
 
 (The MIT License)
 
-Copyright (c) 2017 Marketo, Inc.
+Copyright (c) 2017 Marketo, Inc. <oss@marketo.com>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
