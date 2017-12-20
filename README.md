@@ -1,6 +1,7 @@
 # Marketo API
 [![Build Status](https://travis-ci.org/toutapp/marketo_api.svg?branch=master)](https://travis-ci.org/toutapp/marketo_api)
 [![Code Climate](https://codeclimate.com/github/toutapp/marketo_api/badges/gpa.svg)](https://codeclimate.com/github/toutapp/marketo_api)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
 > IMPORTANT: This is an **alpha** stage gem and is **not** ready for production use
 
