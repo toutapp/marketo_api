@@ -25,6 +25,7 @@ module MarketoApi
     autoload :Stats,          'marketo_api/api/stats'
     autoload :Activities,     'marketo_api/api/activities'
     autoload :Campaigns,      'marketo_api/api/campaigns'
+    autoload :Workspaces,     'marketo_api/api/workspaces'
   end
 
   Error               = Class.new(StandardError)
