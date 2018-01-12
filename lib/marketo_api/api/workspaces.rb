@@ -3,7 +3,7 @@ module MarketoApi
     module Workspaces
       include Base
 
-      def get_workspaces
+      def user_workspaces
         get("userservice/lm/v1/workspaces/")
       end
     end
