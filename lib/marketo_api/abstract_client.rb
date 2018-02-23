@@ -11,5 +11,6 @@ module MarketoApi
     include MarketoApi::API::Leads
     include MarketoApi::API::Sales
     include MarketoApi::API::Campaigns
+    include MarketoApi::API::Workspaces
   end
 end
