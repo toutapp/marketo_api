@@ -46,6 +46,32 @@ module MarketoApi
         end
       end
 
+      # Internal: Converts a hash into a string that can be consumed by
+      # the Marketo API as a query string
+      #
+      # Examples
+      #
+      #   to_query({ source: 'Sales Engage', workspaceName: 'Global' })
+      #   # => 'source=Sales%20Engage&workspaceName=Global'
+      def to_query(options = {})
+        options.to_query.gsub('+', '%20')
+      end
+
+      # Internal: Append a nextPageToken to a url if token is present
+      #
+      # Examples
+      #
+      #   add_next_page_token('activities.json?')
+      #   # => '/rest/v1/leads'
+      def add_next_page_token(path, token)
+        path += "&nextPageToken=#{token}" if token
+        path
+      end
+
+      def paging_token_param(token)
+        token.present? ? { nextPageToken: token } : {}
+      end
+
       def extract_case_insensitive_string_or_symbol_key_from_hash!(hash, key)
         value = hash.delete(key.to_sym)
         value ||= hash.delete(key.to_s)
