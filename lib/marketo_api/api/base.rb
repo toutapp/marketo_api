@@ -107,6 +107,17 @@ module MarketoApi
         end
       end
 
+      # Internal: Converts a hash into a string that can be consumed by
+      # the Marketo API as a query string
+      #
+      # Examples
+      #
+      #   to_query({ source: 'Sales Engage', workspaceName: 'Global' })
+      #   # => 'source=Sales%20Engage&workspaceName=Global'
+      def to_query(options = {})
+        options.to_query.gsub('+', '%20')
+      end
+
       def extract_case_insensitive_string_or_symbol_key_from_hash!(hash, key)
         value = hash.delete(key.to_sym)
         value ||= hash.delete(key.to_s)

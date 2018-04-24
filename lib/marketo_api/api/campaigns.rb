@@ -70,7 +70,8 @@ module MarketoApi
       end
 
       def campaigns(options = {})
-        api_get("campaigns.json?#{options.to_query}")
+        options_query = to_query(options)
+        api_get("campaigns.json?#{options_query}")
       end
 
       # Public: Passes a set of leads to a trigger campaign to run through the campaign's flow.
