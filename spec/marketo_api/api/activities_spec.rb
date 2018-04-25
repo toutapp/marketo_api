@@ -34,12 +34,6 @@ describe MarketoApi::API::Activities do
     end
   end
 
-  describe '#add_next_page_token' do
-    it 'appends nextPageToken to the path' do
-      expect(subject.add_next_page_token('foo', 'bar')).to eql('foo&nextPageToken=bar')
-    end
-  end
-
   describe '#add_activity_type_ids' do
     context 'when type_ids are passed in' do
       it 'appends activityTypeIds' do
