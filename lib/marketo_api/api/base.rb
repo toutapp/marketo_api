@@ -68,6 +68,12 @@ module MarketoApi
         path
       end
 
+      # Internal: Returns hash for next page token param
+      #
+      # Examples
+      #
+      #   add_next_page_token('123')
+      #   # => { nextPageToken: '123' }
       def paging_token_param(token)
         token.present? ? { nextPageToken: token } : {}
       end
