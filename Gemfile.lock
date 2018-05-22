@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    marketo_api (0.1.0.pre.alpha)
+    marketo_api (0.1.1.pre.alpha)
       faraday (~> 0.12.2)
       faraday_middleware (~> 0.11.0.1)
       hashie (~> 3.5.6)
