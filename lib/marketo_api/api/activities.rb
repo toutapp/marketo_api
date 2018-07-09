@@ -28,11 +28,6 @@ module MarketoApi
         api_get("activities/pagingtoken.json?sinceDatetime=#{mod_time}")
       end
 
-      def add_next_page_token(path, token)
-        path = "#{path}&nextPageToken=#{token}" if token
-        path
-      end
-
       def add_activity_type_ids(type_ids)
         ids = format_filter_values(type_ids)
         if ids
