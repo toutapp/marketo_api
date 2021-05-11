@@ -1,3 +1,3 @@
 module MarketoApi
-  VERSION = '0.1.1-alpha'.freeze
+  VERSION = '0.2.1-alpha'.freeze
 end
