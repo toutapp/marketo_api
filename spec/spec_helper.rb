@@ -1,5 +1,7 @@
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start'rails' do
+  add_filter "/spec/"
+end
 
 require 'bundler/setup'
 Bundler.require :default, :test
