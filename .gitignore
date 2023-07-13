@@ -20,5 +20,4 @@ tmp
 .ruby-version
 *.swp
 junk.rb
-Gemfile.lock
 tags
