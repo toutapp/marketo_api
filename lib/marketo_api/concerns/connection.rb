@@ -38,7 +38,7 @@ module MarketoApi
           builder.use(MarketoApi::Middleware::Caching, cache, options) if cache
 
           # Follows 30x redirects.
-          builder.use(FaradayMiddleware::FollowRedirects)
+          builder.use(Faraday::FollowRedirects::Middleware)
 
           # Raises errors for 40x responses.
           builder.use(MarketoApi::Middleware::RaiseError)
