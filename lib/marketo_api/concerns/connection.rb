@@ -35,7 +35,7 @@ module MarketoApi
           # builder.use(MarketoApi::Middleware::InstanceURL, self, options)
 
           # Caches GET requests.
-          builder.use(:http_cache, options_with_custom_strategy) if cache
+          builder.use(MarketoApi::Middleware::Caching, options_with_custom_strategy) if cache
 
           # Follows 30x redirects.
           builder.response(:follow_redirects)
