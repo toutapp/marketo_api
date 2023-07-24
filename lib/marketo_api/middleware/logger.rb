@@ -1,7 +1,7 @@
 require 'forwardable'
 
 module MarketoApi
-  class Middleware::Logger < Faraday::Middleware
+  class Middleware::Logger < Faraday::Response::Logger
     extend Forwardable
 
     def initialize(app, logger, options)

@@ -1,5 +1,5 @@
 module MarketoApi
-  class Middleware::RaiseError < Faraday::Middleware
+  class Middleware::RaiseError < Faraday::Response::RaiseError
     def on_complete(env)
       @env = env
       case env[:status]

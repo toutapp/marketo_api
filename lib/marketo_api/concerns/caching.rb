@@ -17,7 +17,14 @@ module MarketoApi
 
       # Internal: Cache to use for the caching middleware
       def cache
-        options[:cache]
+        options[:store]
+      end
+
+      def options_with_custom_strategy
+        {
+          :strategy => MarketoApi::Middleware::CachingStrategy,
+          **options
+        }
       end
     end
   end

@@ -1,26 +1,32 @@
 module MarketoApi
-  class Middleware::Caching < FaradayMiddleware::Caching
+  class Middleware::Caching < Faraday::HttpCache
     def call(env)
-      expire(cache_key(env)) unless use_cache?
+      unless use_cache?
+        expire(@strategy.cache_key_for(
+                 env[:url],
+                 env[:request_headers][MarketoApi::Middleware::Authorization::AUTH_HEADER]
+               ))
+      end
       super
     end
 
     def expire(key)
-      cache.delete(key) if cache
+      @strategy.delete(key)
     end
 
-    # We don't want to cache requests for different clients, so append the
-    # oauth token to the cache key.
-    def cache_key(env)
-      super(env) + hashed_auth_header(env)
+    def delete(request, response)
+      headers = %w[Location Content-Location]
+      headers.each do |header|
+        url = response.headers[header]
+        @strategy.delete(request, url) if url
+      end
+
+      @strategy.delete(request, request.url)
+      trace :delete
     end
 
     def use_cache?
       @options.fetch(:use_cache, true)
-    end
-
-    def hashed_auth_header(env)
-      Digest::SHA1.hexdigest(env[:request_headers][MarketoApi::Middleware::Authorization::AUTH_HEADER])
     end
   end
 end

@@ -1,5 +1,6 @@
 require 'faraday'
 require 'faraday/follow_redirects'
+require 'faraday-http-cache'
 require 'json'
 
 require 'marketo_api/version'

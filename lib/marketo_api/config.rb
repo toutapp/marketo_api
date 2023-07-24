@@ -104,7 +104,7 @@ module MarketoApi
 
     # Set this to an object that responds to read, write and fetch and all GET
     # requests will be cached.
-    option :cache
+    option :store
 
     # Faraday request read/open timeout.
     option :timeout
