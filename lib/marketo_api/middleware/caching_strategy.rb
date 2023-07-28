@@ -34,7 +34,7 @@ module MarketoApi
 
     def delete(request, url)
       oauth_token = get_oauth_token(request)
-      cache_key = cache_key_for(request.url, oauth_token)
+      cache_key = cache_key_for(url, oauth_token)
       cache.delete(cache_key)
     end
 
