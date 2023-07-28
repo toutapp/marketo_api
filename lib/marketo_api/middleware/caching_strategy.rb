@@ -32,7 +32,9 @@ module MarketoApi
       Faraday::HttpCache::Response.new(response)
     end
 
-    def delete(cache_key)
+    def delete(request, url)
+      oauth_token = get_oauth_token(request)
+      cache_key = cache_key_for(request.url, oauth_token)
       cache.delete(cache_key)
     end
 
