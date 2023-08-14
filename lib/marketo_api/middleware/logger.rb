@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 
 module MarketoApi
-  class Middleware::Logger < Faraday::Response::Middleware
+  class Middleware::Logger < Faraday::Middleware
     extend Forwardable
 
     def initialize(app, logger, options)
@@ -9,7 +11,7 @@ module MarketoApi
       @options = options
       @logger = logger || begin
         require 'logger'
-        ::Logger.new(STDOUT)
+        ::Logger.new($stdout)
       end
     end
 
@@ -17,19 +19,26 @@ module MarketoApi
 
     def call(env)
       debug('request') do
-        dump url: env[:url].to_s,
-          method: env[:method],
-          headers: env[:request_headers],
-          body: env[:body]
+        dump :url => env[:url].to_s,
+             :method => env[:method],
+             :headers => env[:request_headers],
+             :body => env[:body]
       end
       super
     end
 
     def on_complete(env)
       debug('response') do
-        dump status: env[:status].to_s,
-          headers: env[:response_headers],
-          body: env[:body]
+        dump :status => env[:status].to_s,
+             :headers => env[:response_headers],
+             :body => env[:body]
+      end
+    end
+
+    def on_error(exc)
+      debug('response') do
+        dump :details => "#{self.class.name}::#{__method__} - Exception: #{exc.message}",
+             :backtrace => exc.backtrace.join("\n")
       end
     end
 

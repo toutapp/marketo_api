@@ -23,7 +23,7 @@ module MarketoApi
           # Converts the request into JSON.
           builder.request(:json)
 
-          # Handles reauthentication for 403 responses.
+          # Handles re-authentication for 403 responses.
           if authentication_middleware
             builder.use(authentication_middleware, self, options)
           end
@@ -35,10 +35,10 @@ module MarketoApi
           # builder.use(MarketoApi::Middleware::InstanceURL, self, options)
 
           # Caches GET requests.
-          builder.use(MarketoApi::Middleware::Caching, cache, options) if cache
+          builder.use(MarketoApi::Middleware::Caching, options_with_custom_strategy) if cache
 
           # Follows 30x redirects.
-          builder.use(FaradayMiddleware::FollowRedirects)
+          builder.response(:follow_redirects)
 
           # Raises errors for 40x responses.
           builder.use(MarketoApi::Middleware::RaiseError)

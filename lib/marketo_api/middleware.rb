@@ -6,6 +6,7 @@ module MarketoApi
     autoload :Authentication, 'marketo_api/middleware/authentication'
     autoload :Authorization,  'marketo_api/middleware/authorization'
     autoload :Caching,        'marketo_api/middleware/caching'
+    autoload :CachingStrategy,'marketo_api/middleware/caching_strategy'
     autoload :Logger,         'marketo_api/middleware/logger'
 
     def initialize(app, client, options)
